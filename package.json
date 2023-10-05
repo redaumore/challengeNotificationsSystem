@@ -1,0 +1,30 @@
+{
+  "name": "challengenotificationssystem",
+  "version": "1.0.0",
+  "description": "Challenge Notification System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "npx nodemon",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redaumore/challengeNotificationsSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redaumore/challengeNotificationsSystem/issues"
+  },
+  "homepage": "https://github.com/redaumore/challengeNotificationsSystem#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "nodemon": "^3.0.1",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
