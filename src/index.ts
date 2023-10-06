@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import cors, { CorsOptions } from 'cors';
 import bodyParser from 'body-parser';
-import mainRoutes from './routes/main.routes';
 import Routes from './routes';
 
 export default class Server {
@@ -16,6 +15,6 @@ export default class Server {
     };
     app.use(cors(corsOptions));
     app.use(bodyParser.json());
-    //app.use(express.urlencoded({ extended: true }));
+    app.use(express.urlencoded({ extended: true }));
   }
 }
