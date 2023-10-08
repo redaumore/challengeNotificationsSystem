@@ -18,6 +18,17 @@
     ],
     "rules": {
         "no-console": 0,
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-restricted-properties": [
+            "error",
+            {
+              "object": "describe",
+              "property": "only"
+            },
+            {
+              "object": "it",
+              "property": "only"
+            }
+          ],
     }
 }

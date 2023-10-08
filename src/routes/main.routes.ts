@@ -1,16 +1,7 @@
 import { Router } from 'express';
-import { home } from '../controllers/home.controller';
+import { home } from '../controllers/main.controller';
 
-class MainRoutes {
-  router = Router();
+const router = Router();
+router.get('/', home);
 
-  constructor() {
-    this.initializeRoutes();
-  }
-
-  private initializeRoutes() {
-    this.router.get('/', home);
-  }
-}
-
-export default new MainRoutes().router;
+export { router };
