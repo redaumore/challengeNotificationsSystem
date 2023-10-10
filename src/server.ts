@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import app from './app';
+import app from '.';
 
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 5) : 8080;
 
