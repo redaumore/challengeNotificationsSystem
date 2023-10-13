@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import express, { Application } from 'express';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import './controllers/IndexHandler';
-import './controllers/NotificationsHandler';
-import container from './inversify.config';
+import './infraestructure/IndexHandler';
+import './infraestructure/NotificationsHandler';
+import container from './container.config';
 import bodyParser from 'body-parser';
 
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 5) : 8080;

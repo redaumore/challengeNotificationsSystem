@@ -1,16 +1,17 @@
+import { inject, injectable } from 'inversify';
+import TYPES from '../container.types';
 import { Notification } from '../domain/Notification';
-import { RecipientRepository } from './RecipientsRepository';
+import { iRecipientsRepository } from './RecipientsRepository';
 
-class NotificationService {
-  private repositories: Array<RecipientRepository>;
+@injectable()
+export class NotificationService {
+  constructor(
+    @inject(TYPES.RecipientsRepository)
+    private recipientsRepository: iRecipientsRepository
+  ) {}
 
-  constructor(private id: string) {
-    this.repositories = [];
-    this.init();
-  }
-
-  private init() {
-    console.log('Recipient repositories start up');
+  getNotifications(recipient: string, type: string): Promise<Notification[]> {
+    return this.recipientsRepository.getSentNotifications(recipient, type);
   }
 
   sendNotification(
