@@ -2,26 +2,25 @@ import { Notification } from '../domain/Notification';
 import { Recipient } from '../domain/Recipient';
 import { iRecipientsRepository } from '../useCases/RecipientsRepository';
 import { injectable } from 'inversify';
+import axios from 'axios';
 
 @injectable()
 export class RecipientsRepository implements iRecipientsRepository {
-  getSentNotifications(
+  async getSentNotifications(
     recipient: string,
     type: string
   ): Promise<Notification[]> {
     //TODO: find notifications for recipient
 
-    const notifications: Notification[] = [];
+    const notifications: Notification[] = await axios.get(
+      `http://localhost:3000/recipients/${recipient}`,
+      {
+        headers: {
+          'Accept-Encoding': 'application/json',
+        },
+      }
+    );
 
-    notifications.push(
-      new Notification('STATUS', `Notif1 status for ${recipient}`)
-    );
-    notifications.push(
-      new Notification('STATUS', `Notif2 status for ${recipient}`)
-    );
-    notifications.push(
-      new Notification('MARKETING', `Notif3 marketing for ${recipient}`)
-    );
     return Promise.resolve(notifications);
   }
 }

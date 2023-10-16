@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 import TYPES from '../container.types';
-import { Notification } from '../domain/Notification';
+import { Notification, iNotification } from '../domain/Notification';
 import { iRecipientsRepository } from './RecipientsRepository';
 
 @injectable()
@@ -14,14 +14,10 @@ export class NotificationService {
     return this.recipientsRepository.getSentNotifications(recipient, type);
   }
 
-  sendNotification(
-    content: string,
-    recipient: string,
-    notificationType: string
-  ): boolean {
+  postNotification(notification: iNotification): boolean {
     // Get the current timestamp
     const currentTime = Date.now();
-    const newNotification = new Notification(notificationType, content);
+    const newNotification = new Notification(notification);
 
     return true;
   }
